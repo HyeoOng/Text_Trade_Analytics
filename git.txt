@@ -1,6 +1,0 @@
-git add 파일명
-git commit -m "타이틀"
-
-
-git pull
-git push
