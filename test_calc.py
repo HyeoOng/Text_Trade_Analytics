@@ -47,7 +47,7 @@ class TddTest(unittest.TestCase):
 
     # 매 테스트 메소드 실행 후 동작
     def tearDown(self):
-        print(' 결과 값 : ' + str(self.result))
+        print(' 결과 : ' + str(self.result))
 
 if __name__ == '__main__':
     unittest.main()
