@@ -1,16 +1,16 @@
-version: "3.7" # 버전 지정
+version: "3.7"
 
-services: # 컨테이너 설정
-  project_db:   
-    image: mariadb:10.5.8 # 컨테이너에서 사용하는 base image 지정
-    restart: always # 컨테이너 다운 시 재시작하라는 명령어
-    volumes: # -v 옵션과 동일
-      - mysql-data:/var/lib/mysql
-    environment: # 컨테이너 안의 환경변수 설정
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=stock_db
-    ports: # -p 옵션과 동일
-      - "3306:3306"
+services:
+  project_db:
+    image: postgres:13
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=stock_db
+    ports:
+      - "5432:5432"
 
 volumes:
-  mysql-data:
+  postgres-data:
