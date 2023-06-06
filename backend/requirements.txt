@@ -12,6 +12,8 @@ exceptiongroup==1.1.1
 h11==0.14.0
 idna==3.4
 outcome==1.2.0
+protobuf==3.20.3
+psycopg2-binary==2.9.6
 PySocks==1.7.1
 pytz==2023.3
 requests==2.28.2
@@ -22,5 +24,6 @@ soupsieve==2.4
 sqlparse==0.4.4
 trio==0.22.0
 trio-websocket==0.10.2
+typing-extensions==4.6.3
 urllib3==1.26.15
 wsproto==1.2.0
