@@ -4,7 +4,9 @@ from rest_framework import status
 from rest_framework import permissions
 
 from .models import Animal
+from .models import RecommendedStock
 from .serializers import AnimalSerializer
+from .serializers import RecommendedStockSerializer
 
 
 class AnimalListApiView(APIView):
@@ -40,7 +42,6 @@ class AnimalDetailApiView(APIView):
         '''
         animal  = Animal.objects.get(id=animal_id)
         serializer = AnimalSerializer(animal)
-        print(serializer)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
     def delete(self, request, animal_id, *args, **kwargs):
@@ -53,3 +54,13 @@ class AnimalDetailApiView(APIView):
             {"message": "Deleted!"},
             status=status.HTTP_200_OK
         )
+
+class RecommendedStockListApiView(APIView):
+
+    def get(self, request, *args, **kwargs):
+        '''
+        모든 추천 종목 목록을 표시
+        '''
+        stocks = RecommendedStock.objects.all() # 모든 동물 데이터 가져오기
+        serializer = RecommendedStockSerializer(stocks, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

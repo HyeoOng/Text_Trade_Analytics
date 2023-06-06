@@ -8,8 +8,13 @@
 - Docker 설치
 - backend 폴더 내에서 venv 가상환경 생성
 - 가상환경 실행 후, 장고 패키지 설치
+- 가상환경 실행 스크립트 - `source .venv/bin/activate` (자기 가상환경 이름 입력하기)
 ```
 $ pip install -r requirements.txt
+```
+- 새로운 패키지를 설치할 경우, 이 명령어 실행
+```
+$ pip freeze > requirements.txt
 ```
 
 ## 1. DB 띄우기
@@ -34,6 +39,13 @@ python manage.py migrate
 $ python3 manage.py runserver 
 ```
 
+## 4. DB에 csv 데이터 import하기
+- 만약 장고 어드민 페이지에서 주식 데이터가 보이지 않는다면, 스크립트를 사용해서 csv 데이터를 임포트해준다
+- 만약 새로운 파일을 추가해서 추가데이터를 넣어야 할 경우, import_stock_data 스크립트 제일 위에 있는 FILE_NAME을 바꿔서 실행해주면 된다
+```
+$ python3 import_stock_data.py
+```
+
 ### 그외 필요시:
 - 장고 어드민 페이지 계정 생성 (`admin/admin`)
 - http://127.0.0.1:8000/admin 접속시 사용
@@ -49,4 +61,15 @@ python manage.py createsuperuser
 3. `python manage.py migrate`로 디비 테이블 생성
 4. `admin.py`에 추가해서 어드민 페이지에 보이도록
 5. 변경된 파일들과 마이그레이션 파일을 `git commit`
+
+## API 추가하기
+Django Rest Framework라는 장고 써드파티 라이브러리 사용
+1. API에서 사용될 모델을 만든다 - `models.py`
+2. API에서 사용될 Serializer를 만든다 - `serializers.py`
+  - Serializer는 모델 <-> json으로 변환해주는 역할
+  - Serializer에서 모델 필드들을 꼭 포함해준다.
+3. API를 만든다 - `views.py`
+  - List 타입과 Detail 타입을 클래스를 각각 만든다.
+  - 만든 클래스들을 각 약속된 주소 형식에 맞게 `urls.py`에 추가해준다.
+
 
