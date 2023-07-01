@@ -25,6 +25,32 @@ class RecommendedStock(models.Model):
     prev_close = models.IntegerField(blank=True, null=True)
     dividend_rate = models.DecimalField(max_digits=30, decimal_places=2, blank=True, null=True)
     reference = models.CharField(max_length=100, blank=True, null=True)
-    
 
-    
+class StockReport(models.Model):
+
+    pdf_name = models.CharField(max_length=300, blank=True, null=True) 
+    wdate = models.DateField(blank=True, null=True)
+    company = models.CharField(max_length=300, blank=True, null=True)
+    title = models.CharField(max_length=300, blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
+    stock_broker = models.ForeignKey(StockCompany,on_delete=models.SET_NULL, blank=True,null=True)
+    target_opinion = models.CharField(max_length=300, blank=True, null=True)
+    target_price = models.IntegerField(blank=True, null=True)
+    report_link = models.CharField(max_length=300, blank=True, null=True)
+    pdf_text = models.TextField(blank=True, null=True)
+    pdf_summerize = models.TextField(blank=True, null=True)
+    pdf_sent_score = models.DecimalField(max_digits=30, decimal_places=5, blank=True, null=True)
+    pdf_sent_topic = models.CharField(max_length=300, blank=True, null=True)
+
+class Kospi(models.Model):
+
+    Code = models.CharField(max_length=30, blank=True, null=True)
+    Name = models.CharField(max_length=30, blank=True, null=True)
+    Current= models.IntegerField(blank=True, null=True)
+    Mkt = models.CharField(max_length=30, blank=True, null=True)
+    Status = models.CharField(max_length=30, blank=True, null=True)
+    PER = models.DecimalField(max_digits=30, decimal_places=2, blank=True, null=True)
+    PBR = models.DecimalField(max_digits=30, decimal_places=2, blank=True, null=True)
+    EPS = models.DecimalField(max_digits=30, decimal_places=2, blank=True, null=True)
+    BPS = models.DecimalField(max_digits=30, decimal_places=2, blank=True, null=True)
+

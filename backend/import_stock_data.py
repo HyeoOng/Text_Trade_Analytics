@@ -11,7 +11,7 @@ django.setup()
 
 from stock_api.models import RecommendedStock, StockCompany
 
-FILE_NAME = 'recommended_stocks_origin.csv'  
+FILE_NAME = 'recommended_stocks_origin.csv'
 
 
 @transaction.atomic

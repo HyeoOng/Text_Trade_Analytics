@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from corsheaders.defaults import default_headers
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +31,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'your_custom_header_name',  # 필요한 경우 사용자 정의 헤더 이름을 추가합니다.
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -39,7 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "stock_api",
-    "django_extensions"
+    "django_extensions",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -50,6 +56,10 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    
 ]
 
 ROOT_URLCONF = "app.urls"
@@ -128,3 +138,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CORS_ORIGIN_ALLOW_ALL = True

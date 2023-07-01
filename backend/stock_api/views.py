@@ -5,8 +5,10 @@ from rest_framework import permissions
 
 from .models import Animal
 from .models import RecommendedStock
+from .models import StockReport
 from .serializers import AnimalSerializer
 from .serializers import RecommendedStockSerializer
+from .serializers import StockReportSerializer
 
 
 class AnimalListApiView(APIView):
@@ -64,3 +66,23 @@ class RecommendedStockListApiView(APIView):
         stocks = RecommendedStock.objects.all() # 모든 동물 데이터 가져오기
         serializer = RecommendedStockSerializer(stocks, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class StockReportListApiView(APIView):
+
+    def get(self, request, *args, **kwargs):
+        '''
+        모든 추천 종목 목록을 표시
+        '''
+        reports = StockReport.objects.all() # 모든 동물 데이터 가져오기
+        serializer = StockReportSerializer(reports, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class KospiListApiView(APIView):
+
+    def get(self, request, *args, **kwargs):
+        '''
+        모든 추천 종목 목록을 표시
+        '''
+        kospis = Kospi.objects.all() # 모든 동물 데이터 가져오
+        return Response(kospi.json.data, status=status.HTTP_200_OK)
