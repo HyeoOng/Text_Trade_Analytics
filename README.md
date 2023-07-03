@@ -133,5 +133,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## 구현 영상
 
 <p align="center">
-  <img src="https://github.com/HyeoOng/Text_Trade_Analytics/assets/112822303/6160d3ce-e092-40fd-bbdf-a453835e5406" style="width:500px">
+  <img src="[https://github.com/HyeoOng/Text_Trade_Analytics/assets/112822303/6160d3ce-e092-40fd-bbdf-a453835e5406](https://github.com/HyeoOng/Text_Trade_Analytics/assets/112822303/0df8f1b2-8de0-41ab-ad98-d31c5da4e75f)https://github.com/HyeoOng/Text_Trade_Analytics/assets/112822303/0df8f1b2-8de0-41ab-ad98-d31c5da4e75f">
 </p>
